@@ -5,8 +5,7 @@ import { About } from './components/About';
 import { Sauna } from './components/Sauna';
 import { Testimonials } from './components/Testimonials';
 import { Booking } from './components/Booking';
-import { FAQ } from './components/FAQ';
-import { ContactForm } from './components/ContactForm';
+import { FAQContact } from './components/FAQContact';
 import { Footer } from './components/Footer';
 import { StickyMobileCTA } from './components/StickyMobileCTA';
 
@@ -21,8 +20,7 @@ export default function App() {
         <Sauna />
         <Testimonials />
         <Booking />
-        <FAQ />
-        <ContactForm />
+        <FAQContact />
       </main>
       <Footer />
       <StickyMobileCTA />

@@ -1,16 +1,28 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Menu, X } from 'lucide-react';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const heroSection = document.getElementById('hero');
+    if (!heroSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsPastHero(!entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: '-80px 0px 0px 0px',
+        threshold: 0,
+      }
+    );
+
+    observer.observe(heroSection);
+    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -24,36 +36,51 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[var(--z-fixed)] transition-all duration-300 ${
-          isScrolled
+        ref={headerRef}
+        className={`fixed top-0 left-0 right-0 z-[var(--z-fixed)] transition-all duration-300 ease-out ${
+          isPastHero
             ? 'bg-white/95 backdrop-blur-md shadow-md'
             : 'bg-transparent'
         }`}
+        style={{ willChange: 'background-color, box-shadow' }}
       >
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-15">
-          <div className="flex items-center justify-between h-20 md:h-24">
-            {/* Logo */}
-            <button
-              onClick={() => scrollToSection('hero')}
-              className="flex flex-col leading-tight focus-coral"
-              aria-label="Massage By Jodie - Home"
+          <div
+            className={`flex items-center h-20 md:h-24 transition-all duration-300 ease-out ${
+              isPastHero ? 'justify-between' : 'justify-center'
+            }`}
+          >
+            {/* Logo - fades/slides in when scrolled past hero */}
+            <div
+              className={`transition-all duration-300 ease-out ${
+                isPastHero
+                  ? 'opacity-100 translate-x-0 w-auto'
+                  : 'opacity-0 -translate-x-4 pointer-events-none w-0 overflow-hidden'
+              }`}
+              style={{ willChange: 'opacity, transform, width' }}
             >
-              <span className="text-[11px] md:text-xs uppercase tracking-wider font-medium" style={{ color: 'hsl(var(--color-plum-light))' }}>
-                
-              </span>
-              <span className="text-lg md:text-xl font-semibold" style={{ color: 'hsl(var(--color-plum))' }}>
-                Massage By Jodie
-              </span>
-            </button>
+              <button
+                onClick={() => scrollToSection('hero')}
+                className="focus-coral"
+                aria-label="Massage By Jodie - Home"
+                tabIndex={isPastHero ? 0 : -1}
+              >
+                <img
+                  src="/images/jodie-logo-nav.png"
+                  alt="Massage By Jodie"
+                  className="h-10 md:h-12 w-auto"
+                />
+              </button>
+            </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1" role="navigation" aria-label="Main navigation">
+            <nav className="hidden md:flex items-center gap-2" role="navigation" aria-label="Main navigation">
               {['Services', 'About', 'Sauna', 'Testimonials', 'FAQ', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="px-5 py-2.5 text-base font-medium rounded-xl transition-all duration-200 focus-coral"
-                  style={{ 
+                  className="px-4 py-2 text-base font-medium rounded-lg transition-all duration-200 focus-coral"
+                  style={{
                     color: 'hsl(var(--color-plum))',
                   }}
                   onMouseEnter={(e) => {
@@ -68,19 +95,21 @@ export function Header() {
                   {item}
                 </button>
               ))}
+              {/* Book Now button - only shows after scrolling past hero */}
               <button
                 onClick={() => scrollToSection('booking')}
-                className="ml-2 px-8 py-3 text-base font-semibold text-white rounded-xl shadow-md transition-all duration-200 min-h-[48px] focus-coral"
+                className={`ml-2 px-6 py-2.5 text-base font-semibold text-white rounded-full shadow-md transition-all duration-300 focus-coral ${
+                  isPastHero ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none w-0 overflow-hidden ml-0 px-0'
+                }`}
                 style={{ backgroundColor: 'hsl(var(--color-coral))' }}
+                tabIndex={isPastHero ? 0 : -1}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = 'hsl(var(--color-coral-hover))';
                   e.currentTarget.style.transform = 'translateY(-1px)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px hsl(var(--color-coral) / 0.3)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = 'hsl(var(--color-coral))';
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 8px hsl(var(--color-coral) / 0.25)';
                 }}
               >
                 Book Now

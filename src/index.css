@@ -1759,6 +1759,29 @@
   }
 }
 
+/* Responsive logo swap */
+.logo-mobile {
+  display: block !important;
+}
+.logo-desktop {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .logo-mobile {
+    display: none !important;
+  }
+  .logo-desktop {
+    display: block !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
 
 :root {
   --color-coral: 13 90% 55%;

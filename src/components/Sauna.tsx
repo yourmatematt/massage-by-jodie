@@ -2,26 +2,10 @@ import { Flame, Palette, Droplets, Heart } from 'lucide-react';
 
 export function Sauna() {
   const benefits = [
-    {
-      icon: Flame,
-      title: 'Deep Heat Therapy',
-      description: 'Infrared rays penetrate deep into tissues, promoting circulation and pain relief'
-    },
-    {
-      icon: Palette,
-      title: 'Chromotherapy',
-      description: 'Healing colored light therapy to balance energy and enhance mood'
-    },
-    {
-      icon: Droplets,
-      title: 'Detoxification',
-      description: 'Deep sweating helps eliminate toxins and supports immune function'
-    },
-    {
-      icon: Heart,
-      title: 'Stress Relief',
-      description: 'Calming environment promotes deep relaxation and mental clarity'
-    }
+    { icon: Flame, title: 'Deep Heat Therapy', description: 'Penetrating infrared for circulation and pain relief' },
+    { icon: Palette, title: 'Chromotherapy', description: 'Healing colored light to balance energy and mood' },
+    { icon: Droplets, title: 'Detoxification', description: 'Deep sweating to eliminate toxins' },
+    { icon: Heart, title: 'Stress Relief', description: 'Promotes deep relaxation and mental clarity' }
   ];
 
   const scrollToBooking = () => {
@@ -32,110 +16,207 @@ export function Sauna() {
   };
 
   return (
-    <section 
-      id="sauna" 
-      className="py-16 md:py-24 lg:py-32 gradient-reverse relative overflow-hidden"
+    <section
+      id="sauna"
+      style={{
+        background: 'linear-gradient(135deg, #fcd5ce 0%, #f9bbb3 50%, #f8ad9d 100%)',
+        padding: '60px 20px',
+      }}
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-15">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div
+          className="sauna-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '50px',
+            alignItems: 'center',
+          }}
+        >
           {/* Content */}
           <div>
-            <span 
-              className="inline-block px-4 py-1.5 text-sm font-semibold uppercase tracking-wider rounded-full mb-4"
+            <span
               style={{
-                backgroundColor: 'hsl(var(--color-warm-white))',
-                color: 'hsl(var(--color-coral))',
-                letterSpacing: '0.1em'
+                display: 'inline-block',
+                padding: '6px 14px',
+                fontSize: '12px',
+                fontWeight: '600',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                borderRadius: '20px',
+                backgroundColor: '#fffbf7',
+                color: '#e8714f',
+                marginBottom: '16px',
               }}
             >
               Infrared Sauna
             </span>
-            
-            <h2 
-              className="text-[32px] md:text-[40px] lg:text-[48px] font-semibold mb-6"
-              style={{ color: 'hsl(var(--color-plum))' }}
+
+            <h2
+              style={{
+                fontSize: '36px',
+                fontWeight: '600',
+                color: '#4d4049',
+                marginBottom: '16px',
+                lineHeight: '1.2',
+              }}
             >
-              Experience{' '}
-              <span style={{ color: 'hsl(var(--color-coral))' }}>
-                Chromotherapy
-              </span>
-              {' '}Healing
+              Experience <span style={{ color: '#e8714f' }}>Chromotherapy</span> Healing
             </h2>
-            
-            <p 
-              className="text-[17px] md:text-[18px] leading-[1.7] mb-8"
-              style={{ color: 'hsl(var(--color-plum-light))' }}
+
+            {/* Mobile image - shows only on mobile, right after title */}
+            <div
+              className="sauna-image-mobile"
+              style={{
+                display: 'none',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                boxShadow: '0 25px 60px rgba(0,0,0,0.2)',
+                marginBottom: '24px',
+              }}
             >
-              Our state-of-the-art infrared sauna combines deep-penetrating heat therapy with chromotherapy (color light therapy) for a truly transformative wellness experience. Unlike traditional saunas, infrared heat warms your body directly, providing therapeutic benefits at a comfortable temperature.
+              <img
+                src="/images/infrared-sauna.webp"
+                alt="Infrared chromotherapy sauna"
+                style={{
+                  width: '100%',
+                  height: '300px',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+            </div>
+
+            <p
+              style={{
+                fontSize: '15px',
+                lineHeight: '1.7',
+                color: '#5d5259',
+                marginBottom: '24px',
+              }}
+            >
+              Our infrared sauna combines deep-penetrating heat with chromotherapy (color light therapy) for a transformative wellness experience. Unlike traditional saunas, infrared heat warms your body directly at a comfortable temperature.
             </p>
-            
+
             {/* Benefits grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '12px',
+                marginBottom: '24px',
+              }}
+            >
               {benefits.map((benefit) => (
-                <div 
+                <div
                   key={benefit.title}
-                  className="p-5 rounded-xl backdrop-blur-sm"
-                  style={{ 
-                    backgroundColor: 'hsl(var(--color-warm-white) / 0.7)',
+                  style={{
+                    padding: '16px',
+                    borderRadius: '12px',
+                    backgroundColor: 'rgba(255, 251, 247, 0.8)',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                    cursor: 'default',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                    e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.12)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)';
                   }}
                 >
-                  <benefit.icon 
-                    className="w-7 h-7 mb-3"
-                    style={{ color: 'hsl(var(--color-coral))' }}
+                  <benefit.icon
+                    size={22}
+                    style={{ color: '#e8714f', marginBottom: '8px' }}
                   />
-                  <h3 
-                    className="text-base font-semibold mb-2"
-                    style={{ color: 'hsl(var(--color-plum))' }}
+                  <h3
+                    style={{
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      color: '#4d4049',
+                      marginBottom: '4px',
+                    }}
                   >
                     {benefit.title}
                   </h3>
-                  <p 
-                    className="text-sm leading-relaxed"
-                    style={{ color: 'hsl(var(--color-plum-light))' }}
+                  <p
+                    style={{
+                      fontSize: '12px',
+                      lineHeight: '1.4',
+                      color: '#7a6f75',
+                    }}
                   >
                     {benefit.description}
                   </p>
                 </div>
               ))}
             </div>
-            
-            {/* CTA */}
+
             <button
               onClick={scrollToBooking}
-              className="px-8 py-3.5 text-base font-semibold text-white rounded-xl shadow-lg transition-all duration-200 min-h-[48px] focus-coral"
-              style={{ backgroundColor: 'hsl(var(--color-coral))' }}
+              style={{
+                padding: '14px 28px',
+                backgroundColor: '#e8714f',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '10px',
+                fontSize: '15px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'background-color 0.2s ease, transform 0.2s ease',
+              }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'hsl(var(--color-coral-hover))';
-                e.currentTarget.style.transform = 'translateY(-1px)';
+                e.currentTarget.style.backgroundColor = '#d4623f';
+                e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'hsl(var(--color-coral))';
+                e.currentTarget.style.backgroundColor = '#e8714f';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
               Book Sauna Session
             </button>
           </div>
-          
-          {/* Image */}
-          <div className="relative">
-            <img 
-              src="https://images.unsplash.com/photo-1583416750470-965b2707b355?w=700&h=700&fit=crop"
-              alt="Infrared chromotherapy sauna interior with colored lights"
-              className="w-full aspect-square object-cover rounded-3xl shadow-2xl"
-              loading="lazy"
-            />
-            <div 
-              className="absolute inset-0 rounded-3xl pointer-events-none"
+
+          {/* Desktop image - hidden on mobile */}
+          <div
+            className="sauna-image-desktop"
+            style={{
+              borderRadius: '20px',
+              overflow: 'hidden',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.2)',
+            }}
+          >
+            <img
+              src="/images/infrared-sauna.webp"
+              alt="Infrared chromotherapy sauna"
               style={{
-                background: 'linear-gradient(180deg, transparent 0%, hsl(var(--color-plum) / 0.05) 100%)'
+                width: '100%',
+                height: '400px',
+                objectFit: 'cover',
+                display: 'block',
               }}
             />
           </div>
-          
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 800px) {
+          .sauna-grid {
+            grid-template-columns: 1fr !important;
+            gap: 30px !important;
+          }
+          .sauna-image-mobile {
+            display: block !important;
+          }
+          .sauna-image-desktop {
+            display: none !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,107 +1,186 @@
-import { TestimonialCard } from './TestimonialCard';
 import { Star } from 'lucide-react';
 
 export function Testimonials() {
   const testimonials = [
     {
-      quote: "Jodie's massage therapy has been life-changing for my chronic back pain. After just three sessions, I'm sleeping better and moving more freely than I have in years. Highly recommend!",
+      text: "Jodie's massage therapy has been life-changing for my chronic back pain. After just three sessions, I'm sleeping better and moving more freely than I have in years.",
       name: 'Sarah M.',
       location: 'Mallacoota Local',
-      rating: 5,
-      initials: 'SM'
     },
     {
-      quote: "As a fisherman, my body takes a beating. Jodie knows exactly where the tension is and how to release it. The infrared sauna is the perfect complement to her massage work.",
+      text: "As a fisherman, my body takes a beating. Jodie knows exactly where the tension is and how to release it. The infrared sauna is the perfect complement to her massage work.",
       name: 'David T.',
       location: 'Mallacoota Local',
-      rating: 5,
-      initials: 'DT'
     },
     {
-      quote: "We discovered Massage By Jodie while holidaying in Mallacoota. The relaxation massage was exceptional - professional, caring, and exactly what we needed after weeks of travel stress.",
-      name: 'Margaret & John K.',
-      location: 'Melbourne Visitors',
-      rating: 5,
-      initials: 'MJ'
+      text: "We discovered Massage By Jodie while holidaying in Mallacoota. The relaxation massage was exceptional - professional, caring, and exactly what we needed.",
+      name: 'Margaret K.',
+      location: 'Melbourne Visitor',
     },
-    {
-      quote: "After a workplace injury, I was struggling with shoulder pain. Jodie's remedial massage and stretching guidance have made such a difference. She genuinely cares about your recovery.",
-      name: 'James R.',
-      location: 'Mallacoota Local',
-      rating: 5,
-      initials: 'JR'
-    },
-    {
-      quote: "The chromotherapy sauna is amazing! I feel lighter, more energized, and my arthritis pain has reduced significantly. Jodie creates such a welcoming, healing space.",
-      name: 'Patricia W.',
-      location: 'Mallacoota Local',
-      rating: 5,
-      initials: 'PW'
-    },
-    {
-      quote: "Jodie is professional, knowledgeable, and has magic hands. I've tried many massage therapists over the years, and she's hands-down the best. Worth every dollar.",
-      name: 'Michael D.',
-      location: 'Genoa Area',
-      rating: 5,
-      initials: 'MD'
-    }
   ];
 
   return (
-    <section 
-      id="testimonials" 
-      className="py-16 md:py-24 lg:py-32"
-      style={{ backgroundColor: 'hsl(var(--color-warm-white))' }}
+    <section
+      id="testimonials"
+      style={{
+        backgroundColor: '#fffbf7',
+        padding: '60px 20px',
+      }}
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-15">
-        {/* Section header */}
-        <div className="text-center mb-12">
-          <span 
-            className="inline-block px-4 py-1.5 text-sm font-semibold uppercase tracking-wider rounded-full mb-4"
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <span
             style={{
-              backgroundColor: 'hsl(var(--color-coral-lighter))',
-              color: 'hsl(var(--color-coral))',
-              letterSpacing: '0.1em'
+              display: 'inline-block',
+              padding: '6px 14px',
+              fontSize: '12px',
+              fontWeight: '600',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              borderRadius: '20px',
+              backgroundColor: '#fde8e4',
+              color: '#e8714f',
+              marginBottom: '16px',
             }}
           >
             Testimonials
           </span>
-          
-          <h2 
-            className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold mb-3"
-            style={{ color: 'hsl(var(--color-plum))' }}
+          <h2
+            style={{
+              fontSize: '36px',
+              fontWeight: '600',
+              color: '#4d4049',
+              marginBottom: '8px',
+            }}
           >
             What Our Clients Say
           </h2>
-          
-          {/* Social proof */}
-          <div className="flex items-center justify-center gap-2">
-            <div className="flex gap-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star 
-                  key={i}
-                  className="w-5 h-5" 
-                  fill="hsl(45, 100%, 50%)"
-                  style={{ color: 'hsl(45, 100%, 50%)' }}
-                />
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              color: '#7a6f75',
+              fontSize: '14px',
+            }}
+          >
+            <div style={{ display: 'flex', gap: '2px' }}>
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={16} fill="#f4b942" color="#f4b942" />
               ))}
             </div>
-            <span 
-              className="text-base md:text-lg font-semibold"
-              style={{ color: 'hsl(var(--color-plum-light))' }}
-            >
-              5.0 from 150+ reviews
-            </span>
+            <span>5.0 from 150+ reviews</span>
           </div>
         </div>
 
-        {/* Testimonials grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} {...testimonial} />
+        {/* Testimonials Grid */}
+        <div
+          className="testimonials-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '24px',
+          }}
+        >
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial.name}
+              style={{
+                backgroundColor: '#fff',
+                borderRadius: '16px',
+                padding: '24px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.06)';
+              }}
+            >
+              {/* Stars */}
+              <div style={{ display: 'flex', gap: '2px', marginBottom: '16px' }}>
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={14} fill="#f4b942" color="#f4b942" />
+                ))}
+              </div>
+
+              {/* Quote */}
+              <p
+                style={{
+                  fontSize: '14px',
+                  lineHeight: '1.6',
+                  color: '#5d5259',
+                  marginBottom: '20px',
+                }}
+              >
+                "{testimonial.text}"
+              </p>
+
+              {/* Author */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  borderTop: '1px solid #f0ebe8',
+                  paddingTop: '16px',
+                }}
+              >
+                <div
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    backgroundColor: '#e8714f',
+                    color: '#fff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                  }}
+                >
+                  {testimonial.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <div
+                    style={{
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      color: '#4d4049',
+                    }}
+                  >
+                    {testimonial.name}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '12px',
+                      color: '#7a6f75',
+                    }}
+                  >
+                    {testimonial.location}
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 800px) {
+          .testimonials-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

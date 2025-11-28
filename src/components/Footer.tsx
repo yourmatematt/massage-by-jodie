@@ -18,25 +18,18 @@ export function Footer() {
           
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex flex-col leading-tight mb-4">
-              <span 
-                className="text-xs uppercase tracking-wider font-medium opacity-70"
-                style={{ color: 'hsl(var(--color-warm-white))' }}
-              >
-                Mallacoota Wellness
-              </span>
-              <span 
-                className="text-2xl font-semibold"
-                style={{ color: 'hsl(var(--color-warm-white))' }}
-              >
-                Massage By Jodie
-              </span>
+            <div className="mb-4">
+              <img
+                src="/images/jodie-logo-nav-footer.png"
+                alt="Massage By Jodie"
+                className="h-16 w-auto filter brightness-0 invert"
+              />
             </div>
             <p 
               className="text-base leading-relaxed mb-6 max-w-md opacity-80"
               style={{ color: 'hsl(var(--color-warm-white))' }}
             >
-              Remedial massage and infrared chromotherapy sauna experiences that restore balance to body and mind.
+              Mallacoota based remedial massage and infrared chromotherapy sauna experiences that restore balance to body and mind.
             </p>
             
             {/* Social links */}
@@ -109,7 +102,7 @@ export function Footer() {
             </h3>
             <div className="flex flex-col gap-3">
               <a
-                href="tel:0400000000"
+                href="tel:0438096808"
                 className="flex items-start gap-3 text-base transition-colors focus-coral group"
                 style={{ color: 'hsl(var(--color-warm-white) / 0.8)' }}
                 onMouseEnter={(e) => {
@@ -120,11 +113,11 @@ export function Footer() {
                 }}
               >
                 <Phone className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <span>0400 000 000</span>
+                <span>0438 096 808</span>
               </a>
               
               <a
-                href="mailto:info@massagebyjodie.com.au"
+                href="mailto:jodie@massagebyjodie.com.au"
                 className="flex items-start gap-3 text-base transition-colors focus-coral group"
                 style={{ color: 'hsl(var(--color-warm-white) / 0.8)' }}
                 onMouseEnter={(e) => {
@@ -135,7 +128,7 @@ export function Footer() {
                 }}
               >
                 <Mail className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <span>info@massagebyjodie.com.au</span>
+                <span>jodie@massagebyjodie.com.au</span>
               </a>
               
               <div

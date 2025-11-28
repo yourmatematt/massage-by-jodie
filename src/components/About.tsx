@@ -1,114 +1,168 @@
 import { Award, Heart, MapPin } from 'lucide-react';
 
 export function About() {
+  const credentials = [
+    { icon: Award, title: 'Qualified', description: 'Diploma in Remedial Massage' },
+    { icon: MapPin, title: 'Local', description: 'Proudly serving Mallacoota' },
+    { icon: Heart, title: 'Experienced', description: '15+ years in practice' }
+  ];
+
   return (
-    <section 
-      id="about" 
-      className="py-16 md:py-24 lg:py-32"
-      style={{ backgroundColor: 'hsl(var(--color-cream))' }}
+    <section
+      id="about"
+      style={{
+        backgroundColor: '#ffffff',
+        padding: '60px 20px',
+      }}
     >
-      <div className="max-w-6xl mx-auto px-5 md:px-10 lg:px-15">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-12 md:gap-16 items-center">
-          
+      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <div
+          className="about-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1.3fr',
+            gap: '50px',
+            alignItems: 'center',
+          }}
+        >
           {/* Image */}
-          <div className="order-2 md:order-1">
-            <img 
-              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=700&fit=crop"
+          <div
+            style={{
+              borderRadius: '20px',
+              overflow: 'hidden',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.15)',
+            }}
+          >
+            <img
+              src="/images/jodie-about-headshot.png"
               alt="Jodie, qualified remedial massage therapist in Mallacoota"
-              className="w-full aspect-[4/5] object-cover rounded-2xl shadow-xl"
-              loading="lazy"
+              style={{
+                width: '100%',
+                height: '420px',
+                objectFit: 'cover',
+                display: 'block',
+              }}
             />
           </div>
-          
+
           {/* Content */}
-          <div className="order-1 md:order-2">
-            <span 
-              className="inline-block px-4 py-1.5 text-sm font-semibold uppercase tracking-wider rounded-full mb-4"
+          <div>
+            <span
               style={{
-                backgroundColor: 'hsl(var(--color-coral-lighter))',
-                color: 'hsl(var(--color-coral))',
-                letterSpacing: '0.1em'
+                display: 'inline-block',
+                padding: '6px 14px',
+                fontSize: '12px',
+                fontWeight: '600',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                borderRadius: '20px',
+                backgroundColor: '#fde8e4',
+                color: '#e8714f',
+                marginBottom: '16px',
               }}
             >
               About Jodie
             </span>
-            
-            <h2 
-              className="text-[32px] md:text-[40px] lg:text-[48px] font-semibold mb-6"
-              style={{ color: 'hsl(var(--color-plum))' }}
+
+            <h2
+              style={{
+                fontSize: '36px',
+                fontWeight: '600',
+                color: '#4d4049',
+                marginBottom: '20px',
+                lineHeight: '1.2',
+              }}
             >
-              Healing Hands,{' '}
-              <span style={{ color: 'hsl(var(--color-coral))' }}>
-                Caring Heart
-              </span>
+              Healing Hands, <span style={{ color: '#e8714f' }}>Caring Heart</span>
             </h2>
-            
-            <div className="space-y-4 mb-8">
-              <p 
-                className="text-[17px] md:text-[18px] leading-[1.7]"
-                style={{ color: 'hsl(var(--color-plum-light))' }}
-              >
-                With over 15 years of experience in remedial and sports massage, I'm passionate about helping people live pain-free, active lives. My approach combines clinical expertise with genuine care for each person's wellbeing.
-              </p>
-              
-              <p 
-                className="text-[17px] md:text-[18px] leading-[1.7]"
-                style={{ color: 'hsl(var(--color-plum-light))' }}
-              >
-                Whether you're recovering from injury, managing chronic pain, or simply need to unwind, I create personalized treatments that address your body's unique needs.
-              </p>
-            </div>
-            
-            {/* Credentials */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {[
-                {
-                  icon: Award,
-                  title: 'Qualified',
-                  description: 'Diploma in Remedial Massage'
-                },
-                {
-                  icon: MapPin,
-                  title: 'Local',
-                  description: 'Proudly serving Mallacoota'
-                },
-                {
-                  icon: Heart,
-                  title: 'Experienced',
-                  description: '15+ years in practice'
-                }
-              ].map((item) => (
-                <div 
+
+            <p
+              style={{
+                fontSize: '15px',
+                lineHeight: '1.7',
+                color: '#5d5259',
+                marginBottom: '12px',
+              }}
+            >
+              With over 15 years of experience in remedial and sports massage, I'm passionate about helping people live pain-free, active lives. My approach combines clinical expertise with genuine care for each person's wellbeing.
+            </p>
+
+            <p
+              style={{
+                fontSize: '15px',
+                lineHeight: '1.7',
+                color: '#5d5259',
+                marginBottom: '28px',
+              }}
+            >
+              Whether you're recovering from injury, managing chronic pain, or simply need to unwind, I create personalized treatments that address your body's unique needs.
+            </p>
+
+            {/* Credentials - horizontal badges */}
+            <div
+              style={{
+                display: 'flex',
+                gap: '24px',
+                flexWrap: 'wrap',
+              }}
+            >
+              {credentials.map((item) => (
+                <div
                   key={item.title}
-                  className="flex flex-col items-start p-5 rounded-xl border-2"
-                  style={{ 
-                    borderColor: 'hsl(var(--color-border))',
-                    backgroundColor: 'white'
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
                   }}
                 >
-                  <item.icon 
-                    className="w-8 h-8 mb-3"
-                    style={{ color: 'hsl(var(--color-coral))' }}
-                  />
-                  <div 
-                    className="text-base font-semibold mb-1"
-                    style={{ color: 'hsl(var(--color-plum))' }}
+                  <div
+                    style={{
+                      width: '44px',
+                      height: '44px',
+                      borderRadius: '50%',
+                      backgroundColor: '#fde8e4',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                    }}
                   >
-                    {item.title}
+                    <item.icon size={20} style={{ color: '#e8714f' }} />
                   </div>
-                  <div 
-                    className="text-sm"
-                    style={{ color: 'hsl(var(--color-plum-light))' }}
-                  >
-                    {item.description}
+                  <div>
+                    <div
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: '600',
+                        color: '#4d4049',
+                      }}
+                    >
+                      {item.title}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: '12px',
+                        color: '#7a6f75',
+                      }}
+                    >
+                      {item.description}
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 800px) {
+          .about-grid {
+            grid-template-columns: 1fr !important;
+            gap: 30px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

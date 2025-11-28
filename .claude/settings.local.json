@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(npm run dev:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(del \"D:\\projects\\massage-by-jodie\\src\\components\\CalendlyWidget.tsx\")",
+      "Bash(ls:*)",
+      "Bash(findstr:*)"
     ],
     "deny": [],
     "ask": []

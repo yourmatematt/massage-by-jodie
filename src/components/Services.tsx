@@ -1,88 +1,227 @@
-import { ServiceCard } from './ServiceCard';
+import { ArrowRight } from 'lucide-react';
 
 export function Services() {
+  const scrollToBooking = () => {
+    const element = document.getElementById('booking');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const services = [
     {
-      title: 'Remedial Massage Therapy',
-      description: 'Targeted relief for sports injuries, chronic pain, and muscle tension. Techniques include deep tissue, myofascial release, and trigger point therapy.',
-      price: '90',
-      duration: '60-90 minutes',
-      modalities: ['Sports & Deep Tissue', 'Hot Rocks', 'Swedish Relaxation'],
-      image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&h=450&fit=crop',
-      popular: true,
-      category: 'massage' as const
+      title: 'Remedial Massage',
+      price: '120',
+      duration: '60-90 min',
+      description: 'Targeted relief for chronic pain and muscle tension',
+      image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&h=300&fit=crop',
+      color: '#e8714f'
     },
     {
-      title: 'Infrared Chromotherapy Sauna',
-      description: 'Detoxifying infrared heat combined with healing color light therapy. Promotes deep relaxation, pain relief, and cellular rejuvenation.',
-      price: '45',
-      duration: '30-45 minutes',
-      modalities: ['Infrared Heat', 'Color Light Therapy', 'Detoxification'],
-      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&h=450&fit=crop',
-      category: 'sauna' as const
+      title: 'Infrared Sauna',
+      price: '25',
+      duration: '15-30 min',
+      description: 'Detoxifying heat therapy for deep relaxation',
+      image: '/images/services-sauna.jpg',
+      color: '#9b59b6'
     },
     {
-      title: 'Relaxation & Stress Relief',
-      description: 'Gentle Swedish massage focused on relaxation and stress reduction. Perfect for those new to massage or seeking pure therapeutic relaxation.',
-      price: '85',
-      duration: '60 minutes',
-      modalities: ['Swedish Massage', 'Aromatherapy', 'Gentle Pressure'],
-      image: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&h=450&fit=crop',
-      category: 'massage' as const
+      title: 'Relaxation Massage',
+      price: '110',
+      duration: '60 min',
+      description: 'Gentle Swedish massage for stress relief',
+      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop',
+      color: '#e8714f'
     },
     {
-      title: 'Ultimate Wellness Package',
-      description: 'Combine remedial massage with infrared sauna for the complete healing experience. Save 15% when booked together.',
-      price: '125',
-      duration: '90-120 minutes',
-      modalities: ['Massage + Sauna', 'Full Body Treatment', 'Maximum Benefits'],
-      image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&h=450&fit=crop',
-      category: 'package' as const
+      title: 'Detox & Restore',
+      price: '100',
+      duration: '60 min',
+      description: '45-min massage + 15-min sauna for complete recovery',
+      image: '/images/services-ultimate-detox.png',
+      color: '#27ae60'
     }
   ];
 
   return (
-    <section 
-      id="services" 
-      className="py-16 md:py-24 lg:py-32"
-      style={{ backgroundColor: 'hsl(var(--color-warm-white))' }}
+    <section
+      id="services"
+      style={{
+        backgroundColor: '#fffbf7',
+        padding: '60px 20px',
+      }}
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-15">
-        {/* Section header */}
-        <div className="text-center mb-12 md:mb-16">
-          <span 
-            className="inline-block px-4 py-1.5 text-sm font-semibold uppercase tracking-wider rounded-full mb-4"
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <h2
             style={{
-              backgroundColor: 'hsl(var(--color-coral-lighter))',
-              color: 'hsl(var(--color-coral))',
-              letterSpacing: '0.1em'
+              fontSize: '36px',
+              fontWeight: '600',
+              color: '#4d4049',
+              marginBottom: '12px',
             }}
           >
-            Our Services
-          </span>
-          <h2 
-            className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold mb-4"
-            style={{ color: 'hsl(var(--color-plum))' }}
-          >
-            Healing Experiences
+            Popular Services
           </h2>
-          <p 
-            className="text-[17px] md:text-[19px] leading-[1.7] max-w-[700px] mx-auto"
-            style={{ color: 'hsl(var(--color-plum-light))' }}
+          <p
+            style={{
+              fontSize: '16px',
+              color: '#7a6f75',
+              maxWidth: '400px',
+              margin: '0 auto',
+            }}
           >
-            From targeted pain relief to deep relaxation, each service is tailored to your body's unique needs
+            Tailored treatments for your body's unique needs
           </p>
         </div>
 
-        {/* Services grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+        {/* Services Grid */}
+        <div
+          className="services-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '24px',
+          }}
+        >
           {services.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+            <div
+              key={service.title}
+              style={{
+                backgroundColor: '#fff',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                cursor: 'pointer',
+                borderTop: `4px solid ${service.color}`,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.12)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+              }}
+            >
+              {/* Image */}
+              <div style={{ height: '160px', overflow: 'hidden' }}>
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.5s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.target as HTMLImageElement).style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.target as HTMLImageElement).style.transform = 'scale(1)';
+                  }}
+                />
+              </div>
+
+              {/* Content */}
+              <div style={{ padding: '20px' }}>
+                <h3
+                  style={{
+                    fontSize: '18px',
+                    fontWeight: '600',
+                    color: '#4d4049',
+                    marginBottom: '6px',
+                  }}
+                >
+                  {service.title}
+                </h3>
+
+                <p
+                  style={{
+                    fontSize: '13px',
+                    color: '#7a6f75',
+                    marginBottom: '16px',
+                    lineHeight: '1.4',
+                  }}
+                >
+                  {service.description}
+                </p>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginBottom: '16px',
+                  }}
+                >
+                  <div>
+                    <span style={{ fontSize: '12px', color: '#e8714f' }}>From </span>
+                    <span
+                      style={{
+                        fontSize: '28px',
+                        fontWeight: '700',
+                        color: '#e8714f',
+                      }}
+                    >
+                      ${service.price}
+                    </span>
+                  </div>
+                  <span style={{ fontSize: '13px', color: '#7a6f75' }}>
+                    {service.duration}
+                  </span>
+                </div>
+
+                <button
+                  onClick={scrollToBooking}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    backgroundColor: '#e8714f',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    transition: 'background-color 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#d4623f';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#e8714f';
+                  }}
+                >
+                  Book Now
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
           ))}
         </div>
-
-        {/* Additional info */}
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .services-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 500px) {
+          .services-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
