@@ -138,6 +138,17 @@ export function Footer() {
                 <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0" />
                 <span>Mallacoota, Victoria 3892</span>
               </div>
+              
+              {/* Opening Hours */}
+              <div
+                className="text-sm mt-2 pl-8"
+                style={{ color: 'hsl(var(--color-warm-white) / 0.6)' }}
+              >
+                <div className="font-medium mb-1" style={{ color: 'hsl(var(--color-warm-white) / 0.8)' }}>Hours</div>
+                <div>Mon–Fri: 9am – 5pm</div>
+                <div>Thu: 9am – 7pm</div>
+                <div>Sat: 9am – 1pm</div>
+              </div>
             </div>
           </div>
           
