@@ -190,6 +190,21 @@ export function Footer() {
             >
               Terms of Service
             </button>
+            <a
+              href="https://yourmateagency.com.au"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm transition-colors focus-coral"
+              style={{ color: 'hsl(var(--color-warm-white) / 0.7)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'hsl(var(--color-coral))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'hsl(var(--color-warm-white) / 0.7)';
+              }}
+            >
+              Built by Your Mate
+            </a>
           </div>
         </div>
       </div>
