@@ -263,6 +263,29 @@ export function FAQContact() {
 
                 <div style={{ marginBottom: '16px' }}>
                   <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#4d4049', marginBottom: '6px' }}>
+                    Phone (optional)
+                  </label>
+                  <input
+                    {...register('phone')}
+                    type="tel"
+                    placeholder="0400 000 000"
+                    style={{
+                      width: '100%',
+                      padding: '12px 14px',
+                      borderRadius: '10px',
+                      border: '1px solid #ddd',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+                      fontSize: '14px',
+                      outline: 'none',
+                      transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+                    }}
+                    onFocus={(e) => { e.target.style.borderColor = '#e8714f'; e.target.style.boxShadow = '0 2px 6px rgba(232,113,79,0.15)'; }}
+                    onBlur={(e) => { e.target.style.borderColor = '#ddd'; e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)'; }}
+                  />
+                </div>
+
+                <div style={{ marginBottom: '16px' }}>
+                  <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#4d4049', marginBottom: '6px' }}>
                     Message *
                   </label>
                   <textarea
