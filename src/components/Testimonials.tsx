@@ -4,18 +4,18 @@ export function Testimonials() {
   const testimonials = [
     {
       text: "Jodie's massage therapy has been life-changing for my chronic back pain. After just three sessions, I'm sleeping better and moving more freely than I have in years.",
-      name: 'Sarah M.',
+      name: 'Amelia.',
       location: 'Mallacoota Local',
     },
     {
       text: "As a fisherman, my body takes a beating. Jodie knows exactly where the tension is and how to release it. The infrared sauna is the perfect complement to her massage work.",
       name: 'David T.',
-      location: 'Mallacoota Local',
+      location: 'Visitor',
     },
     {
       text: "We discovered Massage By Jodie while holidaying in Mallacoota. The relaxation massage was exceptional - professional, caring, and exactly what we needed.",
       name: 'Margaret K.',
-      location: 'Melbourne Visitor',
+      location: 'Visitor',
     },
   ];
 
@@ -51,28 +51,10 @@ export function Testimonials() {
               fontSize: '36px',
               fontWeight: '600',
               color: '#4d4049',
-              marginBottom: '8px',
             }}
           >
             What Our Clients Say
           </h2>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              color: '#7a6f75',
-              fontSize: '14px',
-            }}
-          >
-            <div style={{ display: 'flex', gap: '2px' }}>
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={16} fill="#f4b942" color="#f4b942" />
-              ))}
-            </div>
-            <span>5.0 from 150+ reviews</span>
-          </div>
         </div>
 
         {/* Testimonials Grid */}
