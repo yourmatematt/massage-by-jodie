@@ -34,8 +34,8 @@ export function About() {
             }}
           >
             <img
-              src="/images/jodie-about-headshot.png"
-              alt="Jodie, qualified remedial massage therapist in Mallacoota"
+              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=800&fit=crop"
+              alt="Relaxing spa massage therapy"
               style={{
                 width: '100%',
                 height: '420px',

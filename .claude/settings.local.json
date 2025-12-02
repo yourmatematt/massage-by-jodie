@@ -6,7 +6,8 @@
       "Bash(npm run build:*)",
       "Bash(del \"D:\\projects\\massage-by-jodie\\src\\components\\CalendlyWidget.tsx\")",
       "Bash(ls:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(dir \"D:\\projects\\massage-by-jodie\\public\\favicon\")"
     ],
     "deny": [],
     "ask": []
