@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone, Mail, Clock } from 'lucide-react';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -161,7 +161,7 @@ export function Header() {
           </button>
 
           <nav className="flex flex-col gap-1" role="navigation">
-            {['Services', 'About', 'Sauna', 'Testimonials', 'FAQ', 'Contact'].map((item) => (
+            {['Services', 'About', 'Sauna', 'Testimonials'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -179,7 +179,54 @@ export function Header() {
                 {item}
               </button>
             ))}
+            <button
+              onClick={() => scrollToSection('faq')}
+              className="px-5 py-4 text-xl font-medium text-left rounded-xl transition-colors min-h-[56px] flex items-center focus-coral"
+              style={{ color: 'hsl(var(--color-plum))' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'hsl(var(--color-coral-lighter))';
+                e.currentTarget.style.color = 'hsl(var(--color-coral))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = 'hsl(var(--color-plum))';
+              }}
+            >
+              Contact & FAQ
+            </button>
           </nav>
+
+          <div className="mt-8 pt-8 border-t" style={{ borderColor: 'hsl(var(--color-border))' }}>
+            <div className="flex flex-col gap-3 px-2">
+              <a
+                href="tel:0438096808"
+                className="flex items-center gap-3 text-base transition-colors focus-coral rounded-lg py-2"
+                style={{ color: 'hsl(var(--color-plum-light))' }}
+              >
+                <Phone className="w-4 h-4" style={{ color: 'hsl(var(--color-coral))' }} />
+                0438 096 808
+              </a>
+              <a
+                href="mailto:jodie@massagebyjodie.com.au"
+                className="flex items-center gap-3 text-base transition-colors focus-coral rounded-lg py-2"
+                style={{ color: 'hsl(var(--color-plum-light))' }}
+              >
+                <Mail className="w-4 h-4" style={{ color: 'hsl(var(--color-coral))' }} />
+                jodie@massagebyjodie.com.au
+              </a>
+              <div
+                className="flex items-start gap-3 text-sm py-2"
+                style={{ color: 'hsl(var(--color-plum-light))' }}
+              >
+                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: 'hsl(var(--color-coral))' }} />
+                <div className="flex flex-col">
+                  <span>Mon-Fri 9am-5pm</span>
+                  <span>Thu till 7pm</span>
+                  <span>Sat 9am-1pm</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="mt-8 pt-8 border-t" style={{ borderColor: 'hsl(var(--color-border))' }}>
             <button

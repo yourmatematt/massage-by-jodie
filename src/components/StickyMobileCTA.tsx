@@ -1,13 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Calendar } from 'lucide-react';
 
 export function StickyMobileCTA() {
   const [isVisible, setIsVisible] = useState(false);
+  const lastScrollY = useRef(0);
+  const isInBookingSection = useRef(false);
 
   useEffect(() => {
+    const bookingSection = document.getElementById('booking');
+    if (!bookingSection) return;
+
     const handleScroll = () => {
-      // Show CTA after scrolling past hero (roughly 600px)
-      setIsVisible(window.scrollY > 600);
+      const currentScrollY = window.scrollY;
+      const bookingTop = bookingSection.offsetTop;
+      const scrollingUp = currentScrollY < lastScrollY.current;
+
+      const pastHero = currentScrollY > 600;
+      const reachedBooking = currentScrollY + window.innerHeight > bookingTop + 100;
+
+      if (reachedBooking) {
+        isInBookingSection.current = true;
+        setIsVisible(false);
+      } else if (scrollingUp && isInBookingSection.current && !reachedBooking) {
+        isInBookingSection.current = false;
+        setIsVisible(pastHero);
+      } else if (!isInBookingSection.current) {
+        setIsVisible(pastHero);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll);
