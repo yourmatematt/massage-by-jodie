@@ -37,7 +37,7 @@ export function Hero() {
       >
         {/* Stacked logo for mobile */}
         <img
-          src="/images/hero-logo-text-stacked.png"
+          src="/images/hero-logo-text-mobile.png"
           alt="Massage By Jodie"
           className="logo-mobile"
           style={{ 

@@ -46,7 +46,7 @@ export function Header() {
       >
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-15">
           <div
-            className={`flex items-center h-20 md:h-24 transition-all duration-300 ease-out ${
+            className={`relative flex items-center h-20 md:h-24 transition-all duration-300 ease-out ${
               isPastHero ? 'justify-between' : 'justify-center'
             }`}
           >
@@ -119,7 +119,7 @@ export function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden w-12 h-12 flex items-center justify-center rounded-xl transition-colors focus-coral"
+              className="md:hidden absolute right-0 w-12 h-12 flex items-center justify-center rounded-xl transition-colors focus-coral"
               style={{ color: 'hsl(var(--color-plum))' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'hsl(var(--color-cream))';
@@ -127,10 +127,10 @@ export function Header() {
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'transparent';
               }}
-              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-label="Open menu"
               aria-expanded={isMenuOpen}
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <Menu className="w-6 h-6" />
             </button>
           </div>
         </div>
