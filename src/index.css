@@ -1773,6 +1773,21 @@
   }
   .logo-desktop {
     display: block !important;
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1400px) {
+  .logo-desktop {
+    max-width: 700px !important;
+    margin-top: 80px;
+  }
+}
+
+@media (min-width: 1401px) and (max-width: 1600px) {
+  .logo-desktop {
+    max-width: 850px !important;
+    margin-top: 70px;
   }
 }
 

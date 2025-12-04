@@ -52,9 +52,9 @@ export function Hero() {
           src="/images/hero-logo-text.png"
           alt="Massage By Jodie"
           className="logo-desktop"
-          style={{ 
-            width: '90%', 
-            maxWidth: '1300px',
+          style={{
+            width: '85%',
+            maxWidth: '950px',
             display: 'none'
           }}
         />
