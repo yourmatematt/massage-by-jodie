@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Facebook, Instagram } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 export function Footer() {
   const scrollToSection = (id: string) => {
@@ -31,35 +31,6 @@ export function Footer() {
             >
               Mallacoota based remedial massage and infrared chromotherapy sauna experiences that restore balance to body and mind.
             </p>
-            
-            {/* Social links */}
-            <div className="flex gap-3">
-              {[
-                { icon: Facebook, href: '#', label: 'Facebook' },
-                { icon: Instagram, href: '#', label: 'Instagram' }
-              ].map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 focus-coral"
-                  style={{ backgroundColor: 'hsl(var(--color-plum-medium))' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = 'hsl(var(--color-coral))';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'hsl(var(--color-plum-medium))';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <social.icon 
-                    className="w-5 h-5"
-                    style={{ color: 'hsl(var(--color-warm-white))' }}
-                  />
-                </a>
-              ))}
-            </div>
           </div>
           
           {/* Quick Links */}
