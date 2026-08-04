@@ -143,12 +143,19 @@ async function snapshot(browser, origin, route) {
   const before = visibleBodyText(readFileSync(absFile, 'utf8')).length;
   const page = await browser.newPage();
   try {
+    // Deliberately NOT waitUntil:'networkidle'. The page pulls three images
+    // from images.unsplash.com, and those requests hang in Vercel's build
+    // sandbox, so the network never goes idle and goto times out (this failed
+    // a real deploy). Third-party requests are irrelevant here anyway: the
+    // snapshot only needs the markup React produces, and remote <img> tags are
+    // captured by their src attribute whether or not the bytes ever arrive.
     await page.goto(`${origin}${route}`, {
-      waitUntil: 'networkidle',
+      waitUntil: 'domcontentloaded',
       timeout: 30_000,
     });
-    // Wait on rendered text rather than a selector: it is route-agnostic and
-    // immune to the first child being an empty, invisible portal container.
+    // This is the real readiness gate. Waiting on rendered text rather than a
+    // selector is route-agnostic and immune to the first child being an empty,
+    // invisible portal container.
     await page.waitForFunction(
       (min) => (document.getElementById('root')?.innerText ?? '').trim().length >= min,
       MIN_TEXT_CHARS,
